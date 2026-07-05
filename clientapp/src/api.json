@@ -1,0 +1,10 @@
+{
+    "BASEURL": "http://localhost:5000/api/",
+    "BASEURL_SOCKET_URL": "http://localhost:5000/",
+    "LOGIN_API": "user/login",
+    "REGISTER_API": "user/register",
+    "SEARCHUSERS_API": "user/searchusers?search=",
+    "ROOMLIST_API": "room/list",
+    "MESSAGE_API": "message",
+    "VERIFYOTP_API": "user/verifyotp"
+}

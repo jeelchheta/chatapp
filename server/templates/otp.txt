@@ -1,0 +1,11 @@
+Your Verification Code: {OTPCode}[Subject:]
+
+Hello There,
+
+We received a request to verify your {Company} account. Please use the following One-Time Password (OTP) to complete your signup:
+
+{OTPCode}
+
+This code is valid for the next {ExpDate} minutes.
+
+If you did not initiate this request, please ignore this email. Your account remains secure.
