@@ -46,3 +46,5 @@ project-root/
 > **Note:** Do not commit your `.env` file to version control. Ensure it is included in your `.gitignore`.
 
 That's it! Have fun! 🎉
+
+[![Watch the demo](https://raw.githubusercontent.com/jeelchheta/chatapp/refs/heads/main/video/chatapp.png)](https://github.com/jeelchheta/chatapp/blob/main/video/chatapp.mp4)
