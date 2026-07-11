@@ -1,4 +1,5 @@
 # chatapp
+
 A minimal real-time chat application built for fast, distraction-free messaging.
 
 ## Environment Variables
@@ -13,6 +14,7 @@ MAIL_USER=Your_MAIL_USER
 MAIL_APP_PASSWORD=Your_MAIL_APP_PASSWORD
 PORT=5000
 OTP_EXPIRATION_MIN=5
+TOKEN_EXPIRATION_MIN=5
 AppName=JP Chat
 ```
 
@@ -29,16 +31,17 @@ project-root/
 
 ### Variable Description
 
-| Variable | Description |
-|----------|-------------|
-| `MONGO_URI` | MongoDB connection string. |
-| `JWT_SECRET` | Secret key used to sign JWT tokens. |
-| `JWT_TIMEOUT` | JWT token expiration time (e.g., `7d`, `24h`, `1h`). |
-| `MAIL_USER` | Email address used for sending OTP emails. |
-| `MAIL_APP_PASSWORD` | App password for the email account. |
-| `PORT` | Server port (default: `5000`). |
-| `OTP_EXPIRATION_MIN` | OTP expiration time in minutes. |
-| `AppName` | Name of the application. |
+| Variable               | Description                                          |
+| ---------------------- | ---------------------------------------------------- |
+| `MONGO_URI`            | MongoDB connection string.                           |
+| `JWT_SECRET`           | Secret key used to sign JWT tokens.                  |
+| `JWT_TIMEOUT`          | JWT token expiration time (e.g., `7d`, `24h`, `1h`). |
+| `MAIL_USER`            | Email address used for sending OTP emails. (e.g., test@email.com)          |
+| `MAIL_APP_PASSWORD`    | App password for the email account.                  |
+| `PORT`                 | Server port (default: `5000`).                       |
+| `OTP_EXPIRATION_MIN`   | OTP expiration time in minutes. (e.g., 5)                     |
+| `TOKEN_EXPIRATION_MIN` | Password reset token expiration time in minutes. (e.g., 5)       |
+| `AppName`              | Name of the application.                             |
 
 > **Note:** Do not commit your `.env` file to version control. Ensure it is included in your `.gitignore`.
 
