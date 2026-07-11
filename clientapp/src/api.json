@@ -1,5 +1,5 @@
 {
-    "BASEURL": "http://localhost:5000/api/",
+    "BASEURL": "/api/",
     "BASEURL_SOCKET_URL": "http://localhost:5000/",
     "LOGIN_API": "user/login",
     "REGISTER_API": "user/register",
