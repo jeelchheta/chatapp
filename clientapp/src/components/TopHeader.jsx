@@ -2,12 +2,14 @@ import React from "react";
 import constant, { AppName, RoutesStrings } from "../constant/constant";
 import withRouter, { getObjectFromLocalData, getUserFullName, signout } from "../utility";
 import { Avatar } from "../constant/Icon";
+import socket from "../socket";
 
 function TopHeader(props) {
     const userInfo = getObjectFromLocalData(constant.USERINFO);
 
     const callSignout = () => {
         signout()
+        socket.disconnect();
         window.location.href = RoutesStrings.Base
     }
 

@@ -6,6 +6,8 @@ import MainLayout from "./layouts/MainLayout";
 import ChatLayout from './pages/ChatLayout';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetLink from './pages/ResetLink';
 
 const App = () => (
   <React.Fragment>
@@ -13,6 +15,8 @@ const App = () => (
       <Routes>
         <Route path={RoutesStrings.Base} element={<Login />} />
         <Route path={RoutesStrings.SignUp} element={<Register />} />
+        <Route path={RoutesStrings.ForgotPassword} element={<ForgotPassword />} />
+        <Route path={RoutesStrings.ResetLink} element={<ResetLink />} />
         <Route path={RoutesStrings.Chat} element={
           <MainLayout>
             <ChatLayout />

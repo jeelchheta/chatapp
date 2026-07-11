@@ -9,3 +9,6 @@ We received a request to verify your {Company} account. Please use the following
 This code is valid for the next {ExpDate} minutes.
 
 If you did not initiate this request, please ignore this email. Your account remains secure.
+
+Thank you,
+{Company} Team

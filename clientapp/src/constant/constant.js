@@ -3,7 +3,9 @@ export const PUBLICURL = process.env.PUBLIC_URL
 export const RoutesStrings = {
     Base: "/",
     SignUp: "/signup",
-    Chat: "/chat"
+    Chat: "/chat",
+    ForgotPassword: "/forgotpassword",
+    ResetLink: "/reset-password/:token"
 }
 
 export const Label = {

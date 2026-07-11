@@ -41,3 +41,7 @@ export const DateFormate={
 }
 
 export const OTP_EXPIRATION_MIN = process.env.OTP_EXPIRATION_MIN || 5;
+
+export const TOKEN_EXPIRATION_MIN = process.env.TOKEN_EXPIRATION_MIN || 5;
+
+export const PASSWORD_SALT_ROUNDS = 10;

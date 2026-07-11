@@ -3,13 +3,12 @@ import jwt from 'jsonwebtoken';
 import User from "../models/User.js";
 import { generateCode } from "../utils/utility.js";
 import Moment from "moment";
-import { OTP_EXPIRATION_MIN } from "../constant/constant.js";
+import { OTP_EXPIRATION_MIN, PASSWORD_SALT_ROUNDS, TOKEN_EXPIRATION_MIN } from "../constant/constant.js";
 import Mongoose from "../config/db.js";
 
 export async function registerUserBL(newUser) {
     try {
-        const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(newUser.password, saltRounds);
+        const hashedPassword = await bcrypt.hash(newUser.password, PASSWORD_SALT_ROUNDS);
         const otp = generateCode(6, true),
             otpExpire = Moment(new Date()).add(OTP_EXPIRATION_MIN, "m")
         const result = await User.updateOne(
@@ -58,10 +57,65 @@ export async function verifyOTPBL(newUser) {
 
 }
 
+export async function forgotpasswordBL(newUser) {
+    try {
+
+        const token = generateCode(16),
+            tokenExpire = Moment(new Date()).add(TOKEN_EXPIRATION_MIN, "m")
+        const result = await User.updateOne(
+            { username: newUser.username },
+            {
+                $set: {
+                    token: token,
+                    tokenExpire: tokenExpire
+                }
+            })
+
+        return { token, tokenExpire }
+    }
+    catch (err) {
+        throw err
+    }
+
+}
+
+export async function updatepasswordBL(request) {
+    try {
+
+        const hashedPassword = await bcrypt.hash(request.password, PASSWORD_SALT_ROUNDS);
+        const result = await User.updateOne(
+            { token: request.token },
+            {
+                $set: {
+                    token: null,
+                    password: hashedPassword
+                }
+            })
+    }
+    catch (err) {
+        throw err
+    }
+
+}
+
 export async function validateEmailAndContact(newUser) {
     try {
         let query = {
             username: newUser.username,
+            isVerified: true
+        };
+
+        return await User.findOne(query)
+    }
+    catch (err) {
+        throw err
+    }
+}
+
+export async function getTokenBaseUser(user) {
+    try {
+        let query = {
+            token: user.token,
             isVerified: true
         };
 

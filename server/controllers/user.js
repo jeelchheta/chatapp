@@ -1,9 +1,9 @@
 import User from "../models/User.js";
 import { BaseResponse } from "../utils/utility.js"
-import { DateFormate, Message, OTP_EXPIRATION_MIN, UserRole } from "../constant/constant.js"
-import { registerUserBL, validateEmailAndContact, loginUserBL, searchuser, verifyOTPBL, getUnVerifiedUser } from "../BL/userBL.js"
+import { DateFormate, Message, OTP_EXPIRATION_MIN, TOKEN_EXPIRATION_MIN, UserRole } from "../constant/constant.js"
+import { registerUserBL, validateEmailAndContact, loginUserBL, searchuser, verifyOTPBL, getUnVerifiedUser, forgotpasswordBL, getTokenBaseUser, updatepasswordBL } from "../BL/userBL.js"
 import { sendEmail } from "../BL/mailHelper.js";
-import { getOTPTemplate } from "../templates/Template.js";
+import { getOTPPasswordResetTemplate, getOTPTemplate } from "../templates/Template.js";
 import Moment from "moment";
 
 export const getAllUsers = async (req, res, next) => {
@@ -143,6 +143,58 @@ export async function loginUser(req, res, next) {
     else {
       res.status(200).json(BaseResponse(200, Message[200], userinfo));
     }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export async function forgotpassword(req, res, next) {
+  try {
+    const {
+      username
+    } = req.body;
+
+    if (!username) {
+      return res.status(400).json(BaseResponse(400, Message[400], null));
+    }
+
+    let checkEmailAndContact = await validateEmailAndContact(req.body);
+    if (!checkEmailAndContact) {
+      return res.status(404).json(BaseResponse(404, Message[404], null));
+    }
+
+    const newUser = await forgotpasswordBL(req.body)
+    const { subject, body } = await getOTPPasswordResetTemplate(req, newUser.token, newUser.tokenExpire)
+    await sendEmail(req.body.username, subject, body)
+
+    return res.status(200).json(BaseResponse(200, Message[200], null));
+  } catch (err) {
+    next(err);
+  }
+};
+
+export async function setnewpassword(req, res, next) {
+  try {
+    const {
+      token,
+      password
+    } = req.body;
+
+    if (!token || !password) {
+      return res.status(400).json(BaseResponse(400, Message[400], null));
+    }
+
+    let user = await getTokenBaseUser(req.body);
+    if (!user) {
+      return res.status(404).json(BaseResponse(404, Message[404], null));
+    }
+    else if (Moment(new Date()).diff(user.tokenExpire, "minutes") > TOKEN_EXPIRATION_MIN) {
+      return res.status(400).json(BaseResponse(400, Message[400], null));
+    }
+
+    await updatepasswordBL(req.body)
+
+    return res.status(200).json(BaseResponse(200, Message[200], null));
   } catch (err) {
     next(err);
   }

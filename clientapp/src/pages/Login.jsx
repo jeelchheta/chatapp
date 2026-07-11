@@ -158,9 +158,9 @@ const Login = (props) => {
                   </label>
                 </div> */}
 
-                <a href="#" class="text-decoration-none">
+                <Link to={RoutesStrings.ForgotPassword} class="text-decoration-none">
                   Forgot Password?
-                </a>
+                </Link>
               </div>
 
               {/* <!-- Login Button --> */}

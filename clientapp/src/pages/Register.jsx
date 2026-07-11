@@ -320,7 +320,7 @@ const Register = (props) => {
                   </button>
                   {/* <!-- SignIn Link --> */}
                   <p class="text-center mt-3 mb-0">
-                    Don't have an account?
+                    Already have an account?
                     <Link to={RoutesStrings.Base} class="text-decoration-none">
                       Sign In
                     </Link>

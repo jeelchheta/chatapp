@@ -10,6 +10,7 @@ const Messeges = {
     "v_password2": "Passwords do not match",
     "s_wentwrong": "Somthing went wrong",
     "s_Email":"Email address already exists.",
+    "s_Email1": "Email address not found.",
     "s_OTP":"Please check your OTP and try again."
 }
 

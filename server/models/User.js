@@ -11,7 +11,9 @@ const userSchema = new Mongoose.Schema({
     status: { type: String, enum: StatusConstant, default: UserDefaultStatus },
     otp: String,
     otpExpire: Date,
-    isVerified: { type: Boolean, default: false }
+    isVerified: { type: Boolean, default: false },
+    token: String,
+    tokenExpire: Date
 }, { timestamps: true });
 
 const User = Mongoose.model(DBCollections.users, userSchema);

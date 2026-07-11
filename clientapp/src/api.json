@@ -3,6 +3,8 @@
     "BASEURL_SOCKET_URL": "http://localhost:5000/",
     "LOGIN_API": "user/login",
     "REGISTER_API": "user/register",
+    "FORGOTPASSWORD_API": "user/forgotpassword",
+    "SETNEWPASSWORD_API": "user/setnewpassword",
     "SEARCHUSERS_API": "user/searchusers?search=",
     "ROOMLIST_API": "room/list",
     "MESSAGE_API": "message",
