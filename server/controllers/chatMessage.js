@@ -85,6 +85,11 @@ export async function getMessages(req, res) {
         }
       },
       {
+        $sort: {
+          createdAt: -1,
+        }
+      },
+      {
         $skip: skip
       },
       {
@@ -102,7 +107,7 @@ export async function getMessages(req, res) {
       },
       {
         $sort: {
-          updatedAt: 1
+          createdAt: 1
         }
       }
     ]

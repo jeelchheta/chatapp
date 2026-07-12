@@ -1,16 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
 import APIJSON from "../api.json";
 import Spinner from "../components/spinner";
 import { RoutesStrings } from "../constant/constant";
 import Messeges from "../constant/Messeges";
 import { showToast } from "../features/toasts/toastActions";
 import { PostData } from "../services/apiUtiles";
-import withRouter, {
-    digitValidate,
-    emailValidate
-} from "../utility";
+import withRouter from "../utility";
 
 const ResetLink = (props) => {
     const dispatch = useDispatch();
@@ -88,12 +84,12 @@ const ResetLink = (props) => {
         await PostData(APIJSON.SETNEWPASSWORD_API, "", postData)
             .then((response) => {
 
-                if (response?.statuscode == 200) {
+                if (response?.statuscode === 200) {
                     props.navigate({
                         pathname: RoutesStrings.Base
                     });
                 }
-                else if (response?.statuscode == 404) {
+                else if (response?.statuscode === 404) {
                     dispatch(showToast({ message: Messeges.s_Email1 }))
                 } else {
                     dispatch(showToast({ message: Messeges.s_wentwrong }))

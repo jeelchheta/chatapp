@@ -1,11 +1,10 @@
-import Moment from "moment";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import constant, { UserStatus } from "../constant/constant.js";
+import { Avatar } from "../constant/Icon.js";
 import { FETCH_USERS_STATUS, fetchRooms, fetchUsers, ROOM_ADD_OR_UPDATE, ROOM_ADD_SELECT, ROOM_SELECT, USER_TYPEING } from "../features/user/userActions.js";
 import socket from "../socket.js";
-import { getDataFromLocalStorage, getObjectFromLocalData, getRoomName, getRoomNameSplit, getToUserId, getToUserStatus, isUserTypeing, randomDigitsID, truncateString } from "../utility.js";
-import { Avatar } from "../constant/Icon.js";
+import { getDataFromLocalStorage, getObjectFromLocalData, getRoomName, getRoomNameSplit, getToUserStatus, isUserTypeing, randomDigitsID, truncateString } from "../utility.js";
 import Spinner from "./spinner.jsx";
 
 const ChatSidebar = () => {
@@ -201,7 +200,6 @@ const ChatSidebar = () => {
           :
           (rooms.map((room) => {
             const roomNameSplit = getRoomNameSplit(room);
-            console.log(roomNameSplit)
             return <div key={room._id}
               class="list-group-item user-item"
               onClick={() => {

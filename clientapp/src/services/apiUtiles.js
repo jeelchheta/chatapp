@@ -9,11 +9,11 @@ export function GetData(url, authToke) {
         }
     };
     return new Promise((resolve, reject) => {
-        fetch(`${APIJSON.BASEURL}${url}`, options).
-            then(res => {
+        fetch(`${APIJSON.BASEURL}${url}`, options)
+            .then(res => {
                 return res.json()
-            }).
-            then(res => resolve(res)).catch(err => resolve({}))
+            })
+            .then(res => resolve(res)).catch(err => resolve({}))
     })
 }
 
@@ -27,11 +27,11 @@ export function PostData(url, authToke, postData) {
         body: JSON.stringify(postData) // Convert the JavaScript object to a JSON string
     };
     return new Promise((resolve, reject) => {
-        fetch(`${APIJSON.BASEURL}${url}`, options).
-            then(res => {
+        fetch(`${APIJSON.BASEURL}${url}`, options)
+            .then(res => {
                 return res.json()
-            }).
-            then(res => resolve(res)).catch(err => resolve({}))
+            })
+            .then(res => resolve(res)).catch(err => resolve({}))
     })
 }
 
@@ -45,11 +45,11 @@ export function PutData(url, authToke, postData) {
         body: JSON.stringify(postData) // Convert the JavaScript object to a JSON string
     };
     return new Promise((resolve, reject) => {
-        fetch(`${APIJSON.BASEURL}${url}`, options).
-            then(res => {
+        fetch(`${APIJSON.BASEURL}${url}`, options)
+            .then(res => {
                 return res.json()
-            }).
-            then(res => resolve(res)).catch(err => resolve({}))
+            })
+            .then(res => resolve(res)).catch(err => resolve({}))
     })
 }
 
@@ -64,10 +64,10 @@ export function DeleteData(url, authToke, postData) {
         body: JSON.stringify(postData) // Convert the JavaScript object to a JSON string
     };
     return new Promise((resolve, reject) => {
-        fetch(`${APIJSON.BASEURL}${url}`, options).
-            then(res => {
+        fetch(`${APIJSON.BASEURL}${url}`, options)
+            .then(res => {
                 return res.json()
-            }).
-            then(res => resolve(res)).catch(err => resolve({}))
+            })
+            .then(res => resolve(res)).catch(err => resolve({}))
     })
 }

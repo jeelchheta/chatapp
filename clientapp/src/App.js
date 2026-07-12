@@ -4,9 +4,9 @@ import ToastProvider from './components/Toasts';
 import { RoutesStrings } from './constant/constant';
 import MainLayout from "./layouts/MainLayout";
 import ChatLayout from './pages/ChatLayout';
+import ForgotPassword from './pages/ForgotPassword';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import ForgotPassword from './pages/ForgotPassword';
 import ResetLink from './pages/ResetLink';
 
 const App = () => (

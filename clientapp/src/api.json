@@ -1,6 +1,6 @@
 {
     "BASEURL": "/api/",
-    "BASEURL_SOCKET_URL": "http://localhost:5000/",
+    "SOCKETURL": "/",
     "LOGIN_API": "user/login",
     "REGISTER_API": "user/register",
     "FORGOTPASSWORD_API": "user/forgotpassword",

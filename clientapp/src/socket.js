@@ -1,7 +1,7 @@
 import { io } from "socket.io-client";
 import config from "./api.json";
 
-const socket = io({
+const socket = io(config.SOCKETURL, {
   autoConnect: false,
 });
 

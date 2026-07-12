@@ -1,8 +1,7 @@
-import React from "react";
-import constant, { AppName, RoutesStrings } from "../constant/constant";
-import withRouter, { getObjectFromLocalData, getUserFullName, signout } from "../utility";
+import constant, { RoutesStrings } from "../constant/constant";
 import { Avatar } from "../constant/Icon";
 import socket from "../socket";
+import withRouter, { getObjectFromLocalData, getUserFullName, signout } from "../utility";
 
 function TopHeader(props) {
     const userInfo = getObjectFromLocalData(constant.USERINFO);

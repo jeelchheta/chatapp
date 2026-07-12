@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import APIJSON from "../api.json";
-import Spinner from "../components/spinner";
 import constant, { RoutesStrings } from "../constant/constant";
 import Messeges from "../constant/Messeges";
 import { showToast } from "../features/toasts/toastActions";
@@ -10,7 +10,6 @@ import withRouter, {
   storeInLocalData,
   storeObjectInLocalData,
 } from "../utility";
-import { Link } from "react-router-dom";
 
 const Login = (props) => {
   const dispatch = useDispatch();

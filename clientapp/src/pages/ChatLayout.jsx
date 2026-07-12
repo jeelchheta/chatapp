@@ -5,19 +5,18 @@ import config from "../api.json";
 import constant, { DateFormate, UserStatus } from "../constant/constant";
 
 import Moment from "moment";
+import { Avatar } from "../constant/Icon";
 import Messeges from "../constant/Messeges";
 import { showToast } from "../features/toasts/toastActions";
 import { GetData } from "../services/apiUtiles";
-import { getDataFromLocalStorage, getObjectFromLocalData, getRoomName, getRoomNameSplit, getToUserStatus, isUserTypeing } from "../utility";
 import socket from "../socket";
-import { USER_TYPEING } from "../features/user/userActions";
-import { Avatar } from "../constant/Icon";
+import { getDataFromLocalStorage, getObjectFromLocalData, getRoomName, getRoomNameSplit, getToUserStatus, isUserTypeing } from "../utility";
 
 // const socket = io(config.BASEURL_SOCKET_URL, {
 //   autoConnect: false,
 // });
 
-const LIMIT = 20;
+const LIMIT = 19;
 
 const ChatLayout = () => {
   const dispatch = useDispatch();
@@ -71,9 +70,7 @@ const ChatLayout = () => {
     loadMessages(1, true).finally(() => {
       setInitialLoading(false);
     });
-  }, [selectedRoom]);
-
-
+  }, [selectedRoom?._id]);
 
   // =========================
   // LOAD MESSAGES
@@ -220,6 +217,7 @@ const ChatLayout = () => {
 
   const handleKeyDownTyping = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
       sendMessage()
     }
   }
@@ -296,7 +294,7 @@ const ChatLayout = () => {
           <div
             key={msg._id}
             class={`message ${msg.sender === userInfo?.id ? "sent" : "received"}`}>
-            <pre>{msg.text}</pre>
+            <div class="chat-message">{msg.text}</div>
             <div class="time">
               {Moment(msg.updatedAt).format(DateFormate.HHmmA)} {/* ✓✓ */}
             </div>
